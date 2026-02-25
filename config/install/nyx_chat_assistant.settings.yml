@@ -1,0 +1,8 @@
+enabled: true
+title: 'Chat de Atendimento'
+bot_icon: '🤖'
+primary_color: '#198ed3'
+position: 'bottom-right'
+greeting: 'Olá! Como posso ajudar você hoje?'
+placeholder: 'Digite sua mensagem...'
+message_format: 'markdown'

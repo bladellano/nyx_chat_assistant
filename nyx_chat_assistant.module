@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Módulo principal do Nyx Chatbot Widget.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function nyx_chat_assistant_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.nyx_chat_assistant':
+      $output = '';
+      $output .= '<h3>' . t('Sobre') . '</h3>';
+      $output .= '<p>' . t('Este módulo adiciona um widget de chat interativo em todas as páginas do site, permitindo que usuários anônimos interajam com ele.') . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function nyx_chat_assistant_page_attachments(array &$attachments) {
+  // Carrega o serviço current_user
+  $current_user = \Drupal::currentUser();
+
+  // Verifica se o usuário é anônimo
+  if ($current_user->isAnonymous()) {
+    // Carrega as configurações
+    $config = \Drupal::config('nyx_chat_assistant.settings');
+    // Verifica se o widget está habilitado
+    $enabled = $config->get('enabled');
+
+    if ($enabled === FALSE) {
+      return;
+    }
+    // dd('here');
+    // Anexa a biblioteca do widget
+    $attachments['#attached']['library'][] = 'nyx_chat_assistant/widget';
+
+    // Passa configurações para o JavaScript
+    $attachments['#attached']['drupalSettings']['chatbotWidget'] = [
+      'apiEndpoint' => '/api/chat',
+      'title' => $config->get('title'),
+      'botIcon' => $config->get('bot_icon') ?: '🤖',
+      'primaryColor' => $config->get('primary_color'),
+      'position' => $config->get('position'),
+      'greeting' => $config->get('greeting'),
+      'placeholder' => $config->get('placeholder'),
+      'messageFormat' => $config->get('message_format')
+    ];
+  }
+}

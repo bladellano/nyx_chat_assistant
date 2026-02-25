@@ -1,0 +1,6 @@
+nyx_chat_assistant.settings:
+  title: 'Chat Assistant'
+  description: 'Configurar o widget de chat e a URL do N8N.'
+  route_name: nyx_chat_assistant.settings
+  parent: nyx.admin
+  weight: 20

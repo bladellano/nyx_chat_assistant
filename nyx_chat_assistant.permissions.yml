@@ -1,0 +1,4 @@
+administer nyx chat assistant:
+  title: 'Administer Nyx Chat Assistant'
+  description: 'Gerenciar configurações do Nyx Chat Assistant (widget e N8N).'
+  restrict access: true

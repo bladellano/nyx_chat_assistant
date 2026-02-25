@@ -1,0 +1,7 @@
+widget:
+  version: 1.x
+  js:
+    js/widget.js: { preprocess: false, minified: false }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

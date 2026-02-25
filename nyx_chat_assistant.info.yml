@@ -1,0 +1,6 @@
+name: 'Nyx Chat Assistant'
+type: module
+description: 'Um módulo para integrar um assistente de chat em páginas do Drupal.'
+core_version_requirement: ^10 || ^11
+package: 'Nyx IA'
+configure: nyx_chat_assistant.settings

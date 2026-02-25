@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Nyx Chat Assistant\n"
+"POT-Creation-Date: 2026-02-20 00:00+0000\n"
+"PO-Revision-Date: 2026-02-20 00:00+0000\n"
+"Last-Translator: AI Assistant <noreply@example.com>\n"
+"Language-Team: Portuguese, Brazil\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Enable widget"
+msgstr "Ativar widget"
+
+msgid "When disabled, the chat widget will not be attached to pages."
+msgstr "Quando desativado, o widget de chat não será anexado às páginas."
+
+msgid "Widget title"
+msgstr "Título do widget"
+
+msgid "Bot icon (emoji)"
+msgstr "Ícone do bot (emoji)"
+
+msgid "Enter an emoji to represent the bot (e.g., 🤖, 💬, 👋, 🎯)"
+msgstr "Digite um emoji para representar o bot (ex: 🤖, 💬, 👋, 🎯)"
+
+msgid "Primary color"
+msgstr "Cor primária"
+
+msgid "Position"
+msgstr "Posição"
+
+msgid "Bottom right"
+msgstr "Canto inferior direito"
+
+msgid "Bottom left"
+msgstr "Canto inferior esquerdo"
+
+msgid "Top right"
+msgstr "Canto superior direito"
+
+msgid "Top left"
+msgstr "Canto superior esquerdo"
+
+msgid "Greeting message"
+msgstr "Mensagem de boas-vindas"
+
+msgid "Input placeholder"
+msgstr "Texto padrão do campo de entrada"
+
+msgid "Bot message format"
+msgstr "Formato da mensagem do bot"
+
+msgid "Markdown"
+msgstr "Markdown"
+
+msgid "HTML (sanitized)"
+msgstr "HTML (sanitizado)"
+
+msgid "Plain text"
+msgstr "Texto simples"
+
+msgid "Administer Nyx Chat Assistant"
+msgstr "Administrar Nyx Chat Assistant"

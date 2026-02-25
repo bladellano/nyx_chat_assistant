@@ -1,0 +1,28 @@
+nyx_chat_assistant.settings:
+  type: config_object
+  label: 'Nyx Chat Assistant settings'
+  mapping:
+    enabled:
+      type: boolean
+      label: 'Enable widget'
+    title:
+      type: label
+      label: 'Widget title'
+    bot_icon:
+      type: string
+      label: 'Bot icon (emoji)'
+    primary_color:
+      type: string
+      label: 'Primary color'
+    position:
+      type: string
+      label: 'Position'
+    greeting:
+      type: text
+      label: 'Greeting message'
+    placeholder:
+      type: string
+      label: 'Input placeholder'
+    message_format:
+      type: string
+      label: 'Bot message format'

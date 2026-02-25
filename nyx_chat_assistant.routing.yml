@@ -1,0 +1,25 @@
+nyx_chat_assistant.settings:
+  path: '/admin/config/system/nyx-chat-assistant'
+  defaults:
+    _form: '\Drupal\nyx_chat_assistant\Form\ChatSettingsForm'
+    _title: 'Nyx Chat Assistant'
+  requirements:
+    _permission: 'administer nyx chat assistant'
+
+nyx_chat_assistant.api_chat:
+  path: '/api/chat'
+  defaults:
+    _controller: '\Drupal\nyx_chat_assistant\Controller\ChatController::chat'
+    _format: 'json'
+  requirements:
+    _access: 'TRUE'
+  methods: [POST]
+
+nyx_chat_assistant.api_chat_options:
+  path: '/api/chat'
+  defaults:
+    _controller: '\Drupal\nyx_chat_assistant\Controller\ChatController::options'
+    _format: 'json'
+  requirements:
+    _access: 'TRUE'
+  methods: [OPTIONS]

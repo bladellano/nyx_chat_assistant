@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Instalação e desinstalação do módulo Chatbot Widget.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function nyx_chat_assistant_install() {
+  // Define apenas as configurações mínimas
+  $config = \Drupal::configFactory()->getEditable('nyx_chat_assistant.settings');
+  // Define apenas o 'enabled' como configuração gerenciável via admin
+  // As outras configurações virão do .env ou terão fallback para valores padrão
+  $config->set('enabled', TRUE);
+
+  $config->save();
+
+  \Drupal::messenger()->addStatus(t('Chatbot Widget foi instalado com sucesso! Configure as variáveis no arquivo .env'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function nyx_chat_assistant_uninstall() {
+  // Remove as configurações ao desinstalar
+  \Drupal::configFactory()->getEditable('nyx_chat_assistant.settings')->delete();
+
+  \Drupal::messenger()->addStatus(t('Chatbot Widget foi desinstalado. Todas as configurações foram removidas.'));
+}
+
+/**
+ * Atualiza as traduções do módulo importando o arquivo .po.
+ */
+function nyx_chat_assistant_update_10007() {
+  if (!\Drupal::moduleHandler()->moduleExists('locale')) {
+    \Drupal::logger('nyx_chat_assistant')->warning('Módulo locale não habilitado.');
+    return t('O módulo locale precisa estar habilitado para importar traduções.');
+  }
+
+  $po_file = DRUPAL_ROOT . '/' .
+    \Drupal::moduleHandler()->getModule('nyx_chat_assistant')->getPath() .
+    '/translations/nyx_chat_assistant.pt-br.po';
+
+  if (!is_file($po_file)) {
+    \Drupal::logger('nyx_chat_assistant')->error('Arquivo de tradução não encontrado: @file', ['@file' => $po_file]);
+    return t('Arquivo de tradução não encontrado.');
+  }
+
+  $command = sprintf(
+    '%s locale:import pt-br %s --type=customized --override=all 2>&1',
+    escapeshellcmd(DRUPAL_ROOT . '/../vendor/bin/drush'),
+    escapeshellarg($po_file)
+  );
+
+  exec($command, $output, $status);
+
+  if ($status !== 0) {
+    \Drupal::logger('nyx_chat_assistant')->error(
+      'Erro ao importar traduções via Drush: @output',
+      ['@output' => implode("\n", $output)]
+    );
+    return t('Erro ao importar traduções.');
+  }
+
+  drupal_flush_all_caches();
+
+  \Drupal::logger('nyx_chat_assistant')->info(
+    'Traduções importadas com sucesso. @details',
+    ['@details' => implode(' | ', $output)]
+  );
+
+  return t('Traduções importadas com sucesso.');
+}

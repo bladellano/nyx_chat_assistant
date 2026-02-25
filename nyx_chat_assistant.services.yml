@@ -1,0 +1,4 @@
+services:
+  nyx_chat_assistant.n8n_client:
+    class: 'Drupal\nyx_chat_assistant\Service\N8nClient'
+    arguments: ['@http_client', '@config.factory']
